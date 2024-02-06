@@ -1,3 +1,11 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+require("core_config")
+require("functions")
+
+
+-- Lazy plugin manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -11,8 +19,12 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-
-require("core_config")
-require("functions")
-
 require("lazy").setup("plugins")
+
+require("nvim_cmp")
+
+if vim.g.neovide then
+  require("neovide")
+end
+
+require("nvim-tree").setup()

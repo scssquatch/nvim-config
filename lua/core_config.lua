@@ -31,7 +31,7 @@ vim.opt.modelines = 10
 -- Key Mappings
 
 function map(mode, shortcut, command, silent)
-  vim.api.nvim_set_keymap(mode, shortcut, command, { noremap = true, silent = silent })
+  vim.keymap.set(mode, shortcut, command, { noremap = true, silent = silent })
 end
 
 -- Toggle wrapping
