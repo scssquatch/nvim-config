@@ -78,3 +78,7 @@ map("n", "<leader>cf", ":let @* = expand('%:~')<cr>", true)
 -- Escape with jj or jk
 map("i", "jj", "<esc>")
 map("i", "jk", "<esc>")
+
+-- next and previous in quickfix buffer
+map('n', 'gn', ':cnext<cr>')
+map('n', 'gp', ':cprev<cr>')
