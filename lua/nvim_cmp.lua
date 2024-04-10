@@ -48,5 +48,6 @@ cmp.setup.cmdline(':', {
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 require('lspconfig')['standardrb'].setup {
-  capabilities = capabilities
+  capabilities = capabilities,
+  single_file_support = true,
 }

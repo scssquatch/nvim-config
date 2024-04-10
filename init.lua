@@ -24,7 +24,6 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup('plugins')
 
 require('nvim_cmp')
-require('lsp')
 
 if vim.g.neovide then
   require('neovide')
