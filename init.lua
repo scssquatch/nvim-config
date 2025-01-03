@@ -5,23 +5,7 @@ vim.lsp.set_log_level("debug")
 
 require('core_config')
 require('functions')
-
-
--- Lazy plugin manager
-local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    'git',
-    'clone',
-    '--filter=blob:none',
-    'https://github.com/folke/lazy.nvim.git',
-    '--branch=stable', -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
-
-require('lazy').setup('plugins')
+require('config.lazy')
 
 require('nvim_cmp')
 
@@ -30,3 +14,21 @@ if vim.g.neovide then
 end
 
 require('nvim-tree').setup()
+
+require('companion_config')
+
+require('legendary').setup({
+  extensions = {
+    lazy_nvim = true,
+    codecompanion = true,
+  }
+})
+
+require('lualine').setup({
+  options = {
+    icons_enabled = true,
+    theme = 'gruvbox-material',
+  }
+})
+
+require("typescript-tools").setup({})

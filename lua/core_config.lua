@@ -16,7 +16,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.gdefault = true
 vim.opt.directory = "/tmp/"
-vim.opt.guicursor = "a:blinkon0"
+vim.opt.guicursor = "a:blinkon100,n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.visualbell = true
@@ -27,6 +27,8 @@ vim.opt.wildmode = "list:longest,list:full"
 vim.opt.wildignore:append { "*.o,*.obj,.git,*.rbc,*.class,.svn,vendor/gems/*,*/target/**" }
 vim.opt.modeline = true
 vim.opt.modelines = 10
+vim.opt.smartindent = false
+vim.opt.autoindent = false
 
 -- Key Mappings
 
