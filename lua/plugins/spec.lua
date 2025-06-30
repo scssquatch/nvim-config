@@ -2,7 +2,6 @@ return {
   -- wtf are my keybinds
   {
     'mrjones2014/legendary.nvim',
-    version = 'v2.13.9',
     priority = 10000,
     lazy = false,
   },
@@ -26,7 +25,27 @@ return {
   'hrsh7th/nvim-cmp',
   'L3MON4D3/LuaSnip',
   'saadparwaiz1/cmp_luasnip',
-  'nvim-treesitter/nvim-treesitter',
+
+  -- Treesitter
+  {
+    'nvim-treesitter/nvim-treesitter',
+    config = function()
+      require('nvim-treesitter.configs').setup {
+        highlight = { enable = true },
+        ensure_installed = {
+          'javascript',
+          'lua',
+          'luadoc',
+          'markdown',
+          'markdown_inline',
+          'typescript',
+          'vim',
+          'vimdoc',
+          'yaml',
+        }
+      }
+    end,
+  },
 
   -- JSON formatter
   {
@@ -102,15 +121,6 @@ return {
     end,
   },
 
-  -- searchable dash docs
-  {
-    'mrjones2014/dash.nvim',
-    dependencies = {
-      'nvim-telescope/telescope.nvim',
-    },
-    build = 'make install',
-  },
-
   -- copilot
   {
     'github/copilot.vim',
@@ -119,12 +129,12 @@ return {
   -- AI Code Companion
   {
     'olimorris/codecompanion.nvim',
+    version = "*",
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
       'hrsh7th/nvim-cmp', -- Optional: For using slash commands and variables in the chat buffer
       'nvim-telescope/telescope.nvim', -- Optional: For using slash commands
-      { 'MeanderingProgrammer/render-markdown.nvim', ft = { 'markdown', 'codecompanion' } }, -- Optional: For prettier markdown rendering
       { 'stevearc/dressing.nvim', opts = {} }, -- Optional: Improves `vim.ui.select`
     },
     config = true
@@ -133,7 +143,7 @@ return {
   -- Statusline
   {
     'nvim-lualine/lualine.nvim',
-    dependencies = { 'nvim-tree/nvim-web-devicons' }
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
   },
 
   -- polyglot
@@ -146,5 +156,17 @@ return {
     'pmizio/typescript-tools.nvim',
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
+  },
+
+  -- markdown
+  {
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown", "codecompanion" },
+    opts = {
+      render_modes = { 'n', 'c', 't', 'v' },
+      sign = {
+        enabled = false, -- Turn off in the status column
+      },
+    },
   },
 }

@@ -1,7 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.lsp.set_log_level("debug")
+vim.lsp.set_log_level("error")
 
 require('core_config')
 require('functions')
@@ -28,7 +28,14 @@ require('lualine').setup({
   options = {
     icons_enabled = true,
     theme = 'gruvbox-material',
-  }
+    component_separators = '',
+    section_separators = { left = '', right = '' },
+  },
+  sections = {
+    lualine_b = {'branch', 'diagnostics'},
+    lualine_x = {'filetype'},
+    lualine_y = {},
+  },
 })
 
 require("typescript-tools").setup({})

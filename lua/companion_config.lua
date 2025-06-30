@@ -4,7 +4,7 @@ require('codecompanion').setup({
       adapter = 'anthropic',
     },
     inline = {
-      adapter = 'copilot',
+      adapter = 'anthropic',
     },
   },
   adapters = {
@@ -23,7 +23,7 @@ require('codecompanion').setup({
     openai = function()
       return require('codecompanion.adapters').extend('openai', {
         env = {
-          api_key = 'cmd:op read op://Personal/chatgpt_api_token/password --no-newline',
+          api_key = 'cmd:op read op://Personal/openai_api_token/password --no-newline',
         },
         schema = {
           model = {
