@@ -26,6 +26,12 @@ return {
   'L3MON4D3/LuaSnip',
   'saadparwaiz1/cmp_luasnip',
 
+  -- Conform: formatter
+  {
+    'stevearc/conform.nvim',
+    opts = {},
+  },
+
   -- Treesitter
   {
     'nvim-treesitter/nvim-treesitter',
@@ -96,11 +102,11 @@ return {
   {
     'tpope/vim-surround',
     config = function()
-      -- "#" to surround with ruby string interpolation
+      -- '#' to surround with ruby string interpolation
       vim.g.surround_35 = '#{\r}'
-      -- "-" to surround with no-output erb tag
+      -- '-' to surround with no-output erb tag
       vim.g.surround_45 = '<% \r %>'
-      -- "=" to surround with output erb tag
+      -- '=' to surround with output erb tag
       vim.g.surround_61 = '<%= \r %>'
     end,
   },
@@ -129,7 +135,7 @@ return {
   -- AI Code Companion
   {
     'olimorris/codecompanion.nvim',
-    version = "*",
+    version = '*',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
@@ -154,14 +160,14 @@ return {
   -- typescript tools
   {
     'pmizio/typescript-tools.nvim',
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
     opts = {},
   },
 
   -- markdown
   {
-    "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "codecompanion" },
+    'MeanderingProgrammer/render-markdown.nvim',
+    ft = { 'markdown', 'codecompanion' },
     opts = {
       render_modes = { 'n', 'c', 't', 'v' },
       sign = {

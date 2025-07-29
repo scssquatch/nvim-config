@@ -1,7 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.lsp.set_log_level("error")
+vim.lsp.set_log_level('error')
 
 require('core_config')
 require('functions')
@@ -38,4 +38,6 @@ require('lualine').setup({
   },
 })
 
-require("typescript-tools").setup({})
+require('typescript-tools').setup({})
+
+require('conform_config')
