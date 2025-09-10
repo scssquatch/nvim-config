@@ -8,30 +8,32 @@ require('codecompanion').setup({
     },
   },
   adapters = {
-    anthropic = function()
-      return require('codecompanion.adapters').extend('anthropic', {
-        env = {
-          api_key = 'cmd:op read op://Personal/anthropic_api_key/password --no-newline',
-        },
-        schema = {
-          model = {
-            default = 'claude-opus-4-1-20250805',
+    http = {
+      anthropic = function()
+        return require('codecompanion.adapters').extend('anthropic', {
+          env = {
+            api_key = 'cmd:op read op://Personal/anthropic_api_key/password --no-newline',
           },
-        },
-      })
-    end,
-    openai = function()
-      return require('codecompanion.adapters').extend('openai', {
-        env = {
-          api_key = 'cmd:op read op://Personal/openai_api_token/password --no-newline',
-        },
-        schema = {
-          model = {
-            default = 'gpt-5-2025-08-07',
+          schema = {
+            model = {
+              default = 'claude-opus-4-1-20250805',
+            },
           },
-        },
-      })
-    end,
+        })
+      end,
+      openai = function()
+        return require('codecompanion.adapters').extend('openai', {
+          env = {
+            api_key = 'cmd:op read op://Personal/openai_api_token/password --no-newline',
+          },
+          schema = {
+            model = {
+              default = 'gpt-5-2025-08-07',
+            },
+          },
+        })
+      end,
+    },
   },
 })
 
