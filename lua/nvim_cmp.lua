@@ -45,23 +45,10 @@ cmp.setup.cmdline(':', {
 })
 
 -- Set up lspconfig.
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
-local lspconfig = require('lspconfig')
-
-lspconfig.standardrb.setup {
-  capabilities = capabilities,
-  single_file_support = true,
-}
-
-lspconfig.eslint.setup {
-  capabilities = capabilities,
-  single_file_support = true,
-}
-
-lspconfig.ts_ls.setup {
-  capabilities = capabilities,
-  single_file_support = true,
-}
+vim.lsp.enable('standardrb')
+vim.lsp.enable('eslint')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('lua_ls')
 
 vim.o.updatetime = 250
 vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
