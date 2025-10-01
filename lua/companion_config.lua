@@ -16,7 +16,7 @@ require('codecompanion').setup({
           },
           schema = {
             model = {
-              default = 'claude-opus-4-1-20250805',
+              default = 'claude-sonnet-4-5',
             },
           },
         })
