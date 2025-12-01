@@ -132,20 +132,6 @@ return {
     'github/copilot.vim',
   },
 
-  -- AI Code Companion
-  {
-    'olimorris/codecompanion.nvim',
-    version = '*',
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
-      'hrsh7th/nvim-cmp', -- Optional: For using slash commands and variables in the chat buffer
-      'nvim-telescope/telescope.nvim', -- Optional: For using slash commands
-      { 'stevearc/dressing.nvim', opts = {} }, -- Optional: Improves `vim.ui.select`
-    },
-    config = true
-  },
-
   -- Statusline
   {
     'nvim-lualine/lualine.nvim',
@@ -167,11 +153,53 @@ return {
   -- markdown
   {
     'MeanderingProgrammer/render-markdown.nvim',
-    ft = { 'markdown', 'codecompanion' },
+    ft = { 'markdown' },
     opts = {
       render_modes = { 'n', 'c', 't', 'v' },
       sign = {
         enabled = false, -- Turn off in the status column
+      },
+    },
+  },
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    version = false, -- Never set this value to "*"! Never!
+    ---@module 'avante'
+    ---@type avante.Config
+    opts = {
+      provider = "claude",
+      providers = {
+        claude = {
+          endpoint = "https://api.anthropic.com",
+          model = "claude-sonnet-4-5",
+          timeout = 30000, -- Timeout in milliseconds
+            extra_request_body = {
+              temperature = 0.75,
+              max_tokens = 20480,
+            },
+        },
+      },
+      selector = {
+        ---@alias avante.SelectorProvider "telescope"
+        ---@type avante.SelectorProvider
+        provider = "telescope",
+        provider_opts = {},
+      },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
+      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      {
+        'MeanderingProgrammer/render-markdown.nvim',
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
       },
     },
   },

@@ -15,12 +15,11 @@ end
 
 require('nvim-tree').setup()
 
-require('companion_config')
+-- require('companion_config')
 
 require('legendary').setup({
   extensions = {
     lazy_nvim = true,
-    codecompanion = true,
   }
 })
 
