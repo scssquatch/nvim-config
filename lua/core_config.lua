@@ -32,7 +32,7 @@ vim.opt.autoindent = false
 
 -- Key Mappings
 
-function map(mode, shortcut, command, silent)
+local function map(mode, shortcut, command, silent)
   vim.keymap.set(mode, shortcut, command, { noremap = true, silent = silent })
 end
 
