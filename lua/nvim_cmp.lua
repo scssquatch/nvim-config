@@ -46,8 +46,6 @@ cmp.setup.cmdline(':', {
 
 -- Set up lspconfig.
 vim.lsp.enable('standardrb')
-vim.lsp.enable('eslint')
-vim.lsp.enable('ts_ls')
 vim.lsp.enable('lua_ls')
 
 vim.o.updatetime = 250

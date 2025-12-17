@@ -147,7 +147,22 @@ return {
   {
     'pmizio/typescript-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
-    opts = {},
+    opts = {
+      root_dir = function(bufnr, on_dir)
+        local util = require('lspconfig.util')
+        local fname = vim.api.nvim_buf_get_name(bufnr)
+
+        -- Only activate if tsconfig.json exists (TypeScript project)
+          local root = util.root_pattern('tsconfig.json')(fname)
+
+          if root then
+            on_dir(root)
+          else
+            -- Return without calling on_dir to prevent activation
+            return
+          end
+        end,
+      },
   },
 
   -- markdown
@@ -203,4 +218,10 @@ return {
       },
     },
   },
+  {
+    'esmuellert/nvim-eslint',
+    config = function()
+      require('nvim-eslint').setup({})
+    end,
+  }
 }
