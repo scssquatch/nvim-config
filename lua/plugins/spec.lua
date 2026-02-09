@@ -76,7 +76,7 @@ return {
   -- fuzzy finder
   {
     'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
+    version = '*',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'debugloop/telescope-undo.nvim',
@@ -119,11 +119,21 @@ return {
 
   -- searching
   {
-    'duane9/nvim-rg',
+    'doums/rg.nvim',
     config = function()
-      vim.g.rg_command = 'rg --vimgrep --type-not sql --smart-case'
-      vim.keymap.set('n', 'g/', ':Rg<space>')
-      vim.keymap.set('n', 'g*', ':Rg -w <C-R><C-W><space>')
+      vim.keymap.set('n', 'g/', ':Rgf HS<space>')
+      vim.keymap.set('n', 'g*', ':Rgf HS <C-R><C-W><space>')
+
+      require('rg').setup({
+        qf_format = nil,
+        excluded = {
+          'node_modules',
+          '.git',
+          'target',
+          'package-lock.json',
+          'Cargo.lock',
+        },
+      })
     end,
   },
 
@@ -164,7 +174,6 @@ return {
         end,
       },
   },
-
   -- markdown
   {
     'MeanderingProgrammer/render-markdown.nvim',
@@ -176,52 +185,4 @@ return {
       },
     },
   },
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    version = false, -- Never set this value to "*"! Never!
-    ---@module 'avante'
-    ---@type avante.Config
-    opts = {
-      provider = "claude",
-      providers = {
-        claude = {
-          endpoint = "https://api.anthropic.com",
-          model = "claude-sonnet-4-5",
-          timeout = 30000, -- Timeout in milliseconds
-            extra_request_body = {
-              temperature = 0.75,
-              max_tokens = 20480,
-            },
-        },
-      },
-      selector = {
-        ---@alias avante.SelectorProvider "telescope"
-        ---@type avante.SelectorProvider
-        provider = "telescope",
-        provider_opts = {},
-      },
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
-      {
-        'MeanderingProgrammer/render-markdown.nvim',
-        opts = {
-          file_types = { "markdown", "Avante" },
-        },
-        ft = { "markdown", "Avante" },
-      },
-    },
-  },
-  {
-    'esmuellert/nvim-eslint',
-    config = function()
-      require('nvim-eslint').setup({})
-    end,
-  }
 }

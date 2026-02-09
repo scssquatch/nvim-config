@@ -1,8 +1,15 @@
 require('conform').setup({
   formatters_by_ft = {
     lua = { 'stylua' },
-    javascript = { 'prettierd', 'prettier', stop_after_first = true },
-    typescript = { 'prettierd', 'prettier', stop_after_first = true },
+    javascript = { 'oxfmt' },
+    typescript = { 'oxfmt' },
+    javascriptreact = { 'oxfmt' },
+    typescriptreact = { 'oxfmt' },
+    json = { 'oxfmt' },
+    html = { 'oxfmt' },
+    css = { 'oxfmt' },
+    yaml = { 'oxfmt' },
+    markdown = { 'oxfmt' },
   },
 })
 

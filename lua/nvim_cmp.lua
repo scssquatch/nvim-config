@@ -45,8 +45,14 @@ cmp.setup.cmdline(':', {
 })
 
 -- Set up lspconfig.
-vim.lsp.enable('standardrb')
-vim.lsp.enable('lua_ls')
+-- vim.lsp.enable('standardrb')
+vim.lsp.enable('eslint')
+-- vim.lsp.enable('lua_ls')
+
+vim.lsp.config('eslint', {
+  cmd = { 'vscode-eslint-language-server', '--stdio' },
+  filetypes = { 'javascript', 'javascriptreact' },
+})
 
 vim.o.updatetime = 250
 vim.api.nvim_create_autocmd({ 'CursorHold', 'CursorHoldI' }, {
