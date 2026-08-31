@@ -1,7 +1,7 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
-vim.lsp.set_log_level('error')
+vim.lsp.log.set_level('error')
 
 require('core_config')
 require('functions')
